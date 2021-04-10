@@ -12,6 +12,7 @@ class _MovieListState extends State<MovieList> {
   List movies;
   HttpService service;
 
+
   Future initialize() async {
     movies = [];
     movies = await service.getPopularMovies();
@@ -41,6 +42,9 @@ class _MovieListState extends State<MovieList> {
               color: Colors.white,
               elevation: 2.0,
               child: ListTile(
+                leading: Image.network(
+                        'https://www.themoviedb.org/t/p/w600_and_h900_bestv2/' +
+                            movies[position].posterPath),
                 title: Text(movies[position].title),
                 subtitle: Text(
                   'Rating = ' + movies[position].voteAverage.toString(),
@@ -48,10 +52,12 @@ class _MovieListState extends State<MovieList> {
                 onTap: () {
                   MaterialPageRoute route = MaterialPageRoute(
                       builder: (_) => MovieDetail(movies[position]));
+                      Navigator.push(context, route);
                 },
               ),
             );
           },
-        ));
+        )
+      );
   }
 }
