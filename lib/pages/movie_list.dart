@@ -8,6 +8,7 @@ class MovieList extends StatefulWidget {
 }
 
 class _MovieListState extends State<MovieList> {
+  String imgPath = 'https://image.tmdb.org/t/p/w500/';
   int moviesCount;
   List movies;
   HttpService service;
@@ -35,13 +36,20 @@ class _MovieListState extends State<MovieList> {
         appBar: AppBar(
           title: Text("Popular Movies"),
         ),
-        body: ListView.builder(
+        body: GridView.builder(
           itemCount: (this.moviesCount == null) ? 0 : this.moviesCount,
+          gridDelegate: new SliverGridDelegateWithFixedCrossAxisCount(
+            crossAxisCount: 2,
+            childAspectRatio: 2,
+            mainAxisSpacing: 10.0,
+            crossAxisSpacing: 10.0,
+            
+          ),
           itemBuilder: (context, int position) {
-            return Card(
-              color: Colors.white,
-              elevation: 2.0,
-              child: ListTile(
+            return GridTile(
+              child: InkResponse(
+                enableFeedback: true,
+                child: ListTile(
                 leading: Image.network(
                         'https://www.themoviedb.org/t/p/w600_and_h900_bestv2/' +
                             movies[position].posterPath),
@@ -55,6 +63,7 @@ class _MovieListState extends State<MovieList> {
                       Navigator.push(context, route);
                 },
               ),
+              )
             );
           },
         )
