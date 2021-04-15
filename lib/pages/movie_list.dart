@@ -39,10 +39,9 @@ class _MovieListState extends State<MovieList> {
         body: GridView.builder(
           itemCount: (this.moviesCount == null) ? 0 : this.moviesCount,
           gridDelegate: new SliverGridDelegateWithFixedCrossAxisCount(
-            crossAxisCount: 2,
-            childAspectRatio: 2,
-            mainAxisSpacing: 10.0,
-            crossAxisSpacing: 10.0,
+            crossAxisCount: 2, //jumlah grid
+            childAspectRatio: 2, //jarak bawah
+            crossAxisSpacing: 5.0,
             
           ),
           itemBuilder: (context, int position) {
@@ -51,8 +50,8 @@ class _MovieListState extends State<MovieList> {
                 enableFeedback: true,
                 child: ListTile(
                 leading: Image.network(
-                        'https://www.themoviedb.org/t/p/w600_and_h900_bestv2/' +
-                            movies[position].posterPath),
+                        imgPath + movies[position].posterPath,
+                        fit: BoxFit.cover,),
                 title: Text(movies[position].title),
                 subtitle: Text(
                   'Rating = ' + movies[position].voteAverage.toString(),

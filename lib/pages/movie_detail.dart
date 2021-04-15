@@ -30,6 +30,20 @@ class MovieDetail extends StatelessWidget {
                 height: height / 1.5,
                 child: Image.network(path),
               ),
+               Text(
+                movie.title,
+                style: TextStyle(
+                  fontSize: 28,
+                  fontWeight: FontWeight.bold,
+                  letterSpacing: 2.5,
+                ),
+                textAlign: TextAlign.center,
+              ),
+              Text('Rating = ' + movie.voteAverage.toString(),
+                    style:
+                        TextStyle(fontWeight: FontWeight.bold, fontSize: 15)
+              ),
+              Divider(),
               Container(
                 child: Text(movie.overview),
                 padding: EdgeInsets.only(left: 16, right: 16),
