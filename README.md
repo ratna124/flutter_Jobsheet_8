@@ -1,7 +1,7 @@
 # http_request
 Hasil Build
-![plot](./Hasil/a.jpg)
-![plot](./Hasil/b.jpg)
+![plot](./Hasil/1.jpg)
+![plot](./Hasil/2.jpg)
 
 A new Flutter project.
 
